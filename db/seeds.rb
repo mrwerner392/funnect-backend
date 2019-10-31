@@ -287,6 +287,22 @@ Neighborhood.create(name: 'Willowbrook')
 Neighborhood.create(name: 'Woodrow')
 
 # posts
-Post.create(user: matt, topic: Topic.find_by(name: 'Sports'), neighborhood: Neighborhood.find_by(name: 'Midtown East'), description: 'I love sportz!', date: Date.new(2019, 10, 31), time_of_day: 'Evening')
-Post.create(user: avi, topic: Topic.find_by(name: 'Gaming'), neighborhood: Neighborhood.find_by(name: 'Dumbo/Vinegar Hill'), description: "Let's get a drink and talk about how awesome gaming is!!!", date: Date.new(2019, 11, 1), time_of_day: 'Early afternoon')
-Post.create(user: kim, topic: Topic.find_by(name: 'Food'), neighborhood: Neighborhood.find_by(name: 'Upper West Side'), description: 'MoodFood', date: Date.new(2019, 10, 31), time_of_day: 'Late afternoon')
+p1 = Post.create(user: matt, topic: Topic.find_by(name: 'Sports'), neighborhood: Neighborhood.find_by(name: 'Midtown East'), description: 'I love sportz!', date: Date.new(2019, 10, 31), time_of_day: 'Evening')
+p2 = Post.create(user: avi, topic: Topic.find_by(name: 'Gaming'), neighborhood: Neighborhood.find_by(name: 'Dumbo/Vinegar Hill'), description: "Let's get a drink and talk about how awesome gaming is!!!", date: Date.new(2019, 11, 1), time_of_day: 'Early afternoon')
+p3 = Post.create(user: kim, topic: Topic.find_by(name: 'Food'), neighborhood: Neighborhood.find_by(name: 'Upper West Side'), description: 'MoodFood', date: Date.new(2019, 10, 31), time_of_day: 'Late afternoon')
+
+# post_interests
+PostInterest.create(user: matt, post: p2)
+PostInterest.create(user: matt, post: p3)
+PostInterest.create(user: michelle, post: p1)
+PostInterest.create(user: michelle, post: p2)
+PostInterest.create(user: avi, post: p1)
+PostInterest.create(user: avi, post: p3)
+PostInterest.create(user: kim, post: p1)
+PostInterest.create(user: kim, post: p2)
+PostInterest.create(user: sukrit, post: p2)
+PostInterest.create(user: sukrit, post: p3)
+
+# events
+Event.create(post: p1, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.new(2019, 10, 31), time: Time.parse(Time.new(2000, 1, 1, 21, 30, 0)))
+Event.create(post: p3, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.new(2019, 10, 31), time: Time.parse(Time.new(2000, 1, 1, 17, 30, 0)))
