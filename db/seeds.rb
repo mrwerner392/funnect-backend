@@ -354,5 +354,12 @@ PostInterest.create(user: sukrit, post: p2)
 PostInterest.create(user: sukrit, post: p3)
 
 # events
-Event.create(post: p1, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.new(2019, 10, 31), time_hour: 9, time_minute: 30, time_am_pm: 'pm')
-Event.create(post: p3, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.new(2019, 10, 31), time_hour: 5, time_minute: 0, time_am_pm: 'pm')
+e1 = Event.create(post: p1, user: matt, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.new(2019, 10, 31), time_hour: 9, time_minute: 30, time_am_pm: 'pm')
+e2 = Event.create(post: p3, user: kim, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.new(2019, 10, 31), time_hour: 5, time_minute: 0, time_am_pm: 'pm')
+
+# event_attendees
+EventAttendee.create(user: kim, event: e1)
+EventAttendee.create(user: avi, event: e1)
+EventAttendee.create(user: sukrit, event: e1)
+EventAttendee.create(user: michelle, event: e2)
+EventAttendee.create(user: matt, event: e2)

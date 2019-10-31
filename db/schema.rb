@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_155348) do
+ActiveRecord::Schema.define(version: 2019_10_31_184029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "event_attendees", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_attendees_on_event_id"
+    t.index ["user_id"], name: "index_event_attendees_on_user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.bigint "post_id", null: false
@@ -25,7 +34,9 @@ ActiveRecord::Schema.define(version: 2019_10_31_155348) do
     t.integer "time_hour"
     t.integer "time_minute"
     t.string "time_am_pm"
+    t.bigint "user_id", null: false
     t.index ["post_id"], name: "index_events_on_post_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "interests", force: :cascade do |t|
@@ -101,7 +112,10 @@ ActiveRecord::Schema.define(version: 2019_10_31_155348) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "event_attendees", "events"
+  add_foreign_key "event_attendees", "users"
   add_foreign_key "events", "posts"
+  add_foreign_key "events", "users"
   add_foreign_key "messages", "events"
   add_foreign_key "messages", "users"
   add_foreign_key "post_interests", "posts"
