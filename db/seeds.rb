@@ -9,13 +9,25 @@
 User.destroy_all
 Topic.destroy_all
 Neighborhood.destroy_all
+Post.destroy_all
+PostInterest.destroy_all
+
 
 User.reset_pk_sequence
 Topic.reset_pk_sequence
 Neighborhood.reset_pk_sequence
+Post.reset_pk_sequence
+PostInterest.reset_pk_sequence
 
+# users
 
 matt = User.create(first_name: 'Matt', username: 'matt18', password: '18', age: 27, gender: 'Male', bio: 'I made this', college: 'Williams College', occupation: 'Software Engineer')
+avi = User.create(first_name: 'Avi', username: 'avi1', password: '1', age: 26, gender: 'Male', bio: 'I am avi', college: 'City College', occupation: 'living legend')
+kim = User.create(first_name: 'Kim', username: 'kim1', password: '1', age: 22, gender: 'Female', bio: 'I am kim', college: 'UNCG', occupation: 'little red riding hood')
+michelle = User.create(first_name: 'Michelle', username: 'michelle1', password: '1', age: 30, gender: 'Female', bio: 'I am michelle', college: 'idk', occupation: 'game maker')
+sukrit = User.create(first_name: 'Sukrit', username: 'sukrit1', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+
+# topics
 
 Topic.create(name: 'Aliens')
 Topic.create(name: 'Alcohol')
@@ -64,8 +76,9 @@ Topic.create(name: 'TV')
 Topic.create(name: 'Volunteer Work')
 Topic.create(name: 'Work')
 
-# Manhattan
+# neighborhoods
 
+# Manhattan
 Neighborhood.create(name: 'Alphabet City')
 Neighborhood.create(name: 'Battery Park City')
 Neighborhood.create(name: 'Carnegie Hill')
@@ -98,7 +111,6 @@ Neighborhood.create(name: 'Washington Heights')
 Neighborhood.create(name: 'West Village')
 
 # Bronx
-
 Neighborhood.create(name: 'Baychester/Co-op City')
 Neighborhood.create(name: 'Bedford Park')
 Neighborhood.create(name: 'Belmont')
@@ -131,7 +143,6 @@ Neighborhood.create(name: 'Williamsbridge')
 Neighborhood.create(name: 'Woodlawn')
 
 # Queens
-
 Neighborhood.create(name: 'Arverne')
 Neighborhood.create(name: 'Astoria')
 Neighborhood.create(name: 'Bayside')
@@ -185,7 +196,6 @@ Neighborhood.create(name: 'Woodhaven')
 Neighborhood.create(name: 'Woodside')
 
 # Brooklyn
-
 Neighborhood.create(name: 'Bath Beach')
 Neighborhood.create(name: 'Bay Ridge')
 Neighborhood.create(name: 'Bedford-Stuyvesant')
@@ -230,7 +240,6 @@ Neighborhood.create(name: 'Williamsburg')
 Neighborhood.create(name: 'Windsor Terrace')
 
 # Staten Island
-
 Neighborhood.create(name: 'Annadale')
 Neighborhood.create(name: 'Arden Heights')
 Neighborhood.create(name: 'Arrochar')
@@ -276,3 +285,8 @@ Neighborhood.create(name: 'West New Brighton')
 Neighborhood.create(name: 'Westerleigh')
 Neighborhood.create(name: 'Willowbrook')
 Neighborhood.create(name: 'Woodrow')
+
+# posts
+Post.create(user: matt, topic: Topic.find_by(name: 'Sports'), neighborhood: Neighborhood.find_by(name: 'Midtown East'), description: 'I love sportz!', date: Date.new(2019, 10, 31), time_of_day: 'Evening')
+Post.create(user: avi, topic: Topic.find_by(name: 'Gaming'), neighborhood: Neighborhood.find_by(name: 'Dumbo/Vinegar Hill'), description: "Let's get a drink and talk about how awesome gaming is!!!", date: Date.new(2019, 11, 1), time_of_day: 'Early afternoon')
+Post.create(user: kim, topic: Topic.find_by(name: 'Food'), neighborhood: Neighborhood.find_by(name: 'Upper West Side'), description: 'MoodFood', date: Date.new(2019, 10, 31), time_of_day: 'Late afternoon')
