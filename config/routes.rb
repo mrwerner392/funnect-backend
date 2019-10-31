@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  resources :events
   resources :posts
   resources :neighborhoods
   resources :topics

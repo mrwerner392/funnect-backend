@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_135400) do
+ActiveRecord::Schema.define(version: 2019_10_31_135849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "description"
+    t.string "location"
+    t.date "date"
+    t.time "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_events_on_post_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_messages_on_event_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
 
   create_table "neighboorhoods", force: :cascade do |t|
     t.string "name"
@@ -59,6 +80,9 @@ ActiveRecord::Schema.define(version: 2019_10_31_135400) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "events", "posts"
+  add_foreign_key "messages", "events"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "neighborhoods"
   add_foreign_key "posts", "topics"
   add_foreign_key "posts", "users"
