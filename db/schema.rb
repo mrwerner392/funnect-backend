@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_140115) do
+ActiveRecord::Schema.define(version: 2019_10_31_140928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2019_10_31_140115) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_events_on_post_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -76,6 +82,15 @@ ActiveRecord::Schema.define(version: 2019_10_31_140115) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "user_interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "interest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interest_id"], name: "index_user_interests_on_interest_id"
+    t.index ["user_id"], name: "index_user_interests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "username"
@@ -97,4 +112,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_140115) do
   add_foreign_key "posts", "neighborhoods"
   add_foreign_key "posts", "topics"
   add_foreign_key "posts", "users"
+  add_foreign_key "user_interests", "interests"
+  add_foreign_key "user_interests", "users"
 end

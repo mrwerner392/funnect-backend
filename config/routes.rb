@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :user_interests
+  resources :interests
   resources :post_interests
   resources :messages
   resources :events
