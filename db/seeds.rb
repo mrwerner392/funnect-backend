@@ -6,11 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+PostInterest.destroy_all
+EventAttendee.destroy_all
+UserInterest.destroy_all
+Event.destroy_all
+Post.destroy_all
 User.destroy_all
 Topic.destroy_all
 Neighborhood.destroy_all
-Post.destroy_all
-PostInterest.destroy_all
+Interest.destroy_all
 
 
 User.reset_pk_sequence
@@ -18,6 +22,10 @@ Topic.reset_pk_sequence
 Neighborhood.reset_pk_sequence
 Post.reset_pk_sequence
 PostInterest.reset_pk_sequence
+Interest.reset_pk_sequence
+UserInterest.reset_pk_sequence
+Event.reset_pk_sequence
+EventAttendee.reset_pk_sequence
 
 # users
 

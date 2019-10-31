@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
 
-  belongs_to :creator, class_name: 'User'
+  belongs_to :user
   belongs_to :topic
   belongs_to :neighborhood
   has_one :event, dependent: :destroy

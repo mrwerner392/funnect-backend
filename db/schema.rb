@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_184029) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.bigint "topic_id", null: false
     t.bigint "neighborhood_id", null: false
     t.date "date"
@@ -79,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_10_31_184029) do
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["neighborhood_id"], name: "index_posts_on_neighborhood_id"
     t.index ["topic_id"], name: "index_posts_on_topic_id"
     t.index ["user_id"], name: "index_posts_on_user_id"

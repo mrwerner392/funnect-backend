@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
   has_many :created_posts, class_name: 'Post', dependent: :destroy
-  has_many :created_events, through: :posts, source: :event
+  has_many :created_events, class_name: 'Event', dependent: :destroy
 
   has_many :post_interests, dependent: :destroy
   has_many :posts_interested_in, through: :post_interests, source: :post
