@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_135849) do
+ActiveRecord::Schema.define(version: 2019_10_31_140115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 2019_10_31_135849) do
   create_table "neighborhoods", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_interests_on_post_id"
+    t.index ["user_id"], name: "index_post_interests_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -83,6 +92,8 @@ ActiveRecord::Schema.define(version: 2019_10_31_135849) do
   add_foreign_key "events", "posts"
   add_foreign_key "messages", "events"
   add_foreign_key "messages", "users"
+  add_foreign_key "post_interests", "posts"
+  add_foreign_key "post_interests", "users"
   add_foreign_key "posts", "neighborhoods"
   add_foreign_key "posts", "topics"
   add_foreign_key "posts", "users"
