@@ -6,15 +6,43 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+PostInterest.destroy_all
+EventAttendee.destroy_all
+UserInterest.destroy_all
+Event.destroy_all
+Post.destroy_all
 User.destroy_all
+Topic.destroy_all
+Neighborhood.destroy_all
+Interest.destroy_all
+
+
+User.reset_pk_sequence
+Topic.reset_pk_sequence
+Neighborhood.reset_pk_sequence
+Post.reset_pk_sequence
+PostInterest.reset_pk_sequence
+Interest.reset_pk_sequence
+UserInterest.reset_pk_sequence
+Event.reset_pk_sequence
+EventAttendee.reset_pk_sequence
+
+# users
 
 matt = User.create(first_name: 'Matt', username: 'matt18', password: '18', age: 27, gender: 'Male', bio: 'I made this', college: 'Williams College', occupation: 'Software Engineer')
+avi = User.create(first_name: 'Avi', username: 'avi1', password: '1', age: 26, gender: 'Male', bio: 'I am avi', college: 'City College', occupation: 'living legend')
+kim = User.create(first_name: 'Kim', username: 'kim1', password: '1', age: 22, gender: 'Female', bio: 'I am kim', college: 'UNCG', occupation: 'little red riding hood')
+michelle = User.create(first_name: 'Michelle', username: 'michelle1', password: '1', age: 30, gender: 'Female', bio: 'I am michelle', college: 'idk', occupation: 'game maker')
+sukrit = User.create(first_name: 'Sukrit', username: 'sukrit1', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+
+# topics
 
 Topic.create(name: 'Aliens')
 Topic.create(name: 'Alcohol')
 Topic.create(name: 'Animal Rights')
 Topic.create(name: 'Artificial Intelligence')
 Topic.create(name: 'Astrology')
+Topic.create(name: 'Cats')
 Topic.create(name: 'Charity')
 Topic.create(name: 'Children')
 Topic.create(name: 'Climate')
@@ -57,8 +85,9 @@ Topic.create(name: 'TV')
 Topic.create(name: 'Volunteer Work')
 Topic.create(name: 'Work')
 
-# Manhattan
+# neighborhoods
 
+# Manhattan
 Neighborhood.create(name: 'Alphabet City')
 Neighborhood.create(name: 'Battery Park City')
 Neighborhood.create(name: 'Carnegie Hill')
@@ -91,7 +120,6 @@ Neighborhood.create(name: 'Washington Heights')
 Neighborhood.create(name: 'West Village')
 
 # Bronx
-
 Neighborhood.create(name: 'Baychester/Co-op City')
 Neighborhood.create(name: 'Bedford Park')
 Neighborhood.create(name: 'Belmont')
@@ -124,7 +152,6 @@ Neighborhood.create(name: 'Williamsbridge')
 Neighborhood.create(name: 'Woodlawn')
 
 # Queens
-
 Neighborhood.create(name: 'Arverne')
 Neighborhood.create(name: 'Astoria')
 Neighborhood.create(name: 'Bayside')
@@ -178,7 +205,6 @@ Neighborhood.create(name: 'Woodhaven')
 Neighborhood.create(name: 'Woodside')
 
 # Brooklyn
-
 Neighborhood.create(name: 'Bath Beach')
 Neighborhood.create(name: 'Bay Ridge')
 Neighborhood.create(name: 'Bedford-Stuyvesant')
@@ -223,49 +249,125 @@ Neighborhood.create(name: 'Williamsburg')
 Neighborhood.create(name: 'Windsor Terrace')
 
 # Staten Island
+Neighborhood.create(name: 'Annadale')
+Neighborhood.create(name: 'Arden Heights')
+Neighborhood.create(name: 'Arrochar')
+Neighborhood.create(name: 'Bay Street')
+Neighborhood.create(name: 'Bulls Head')
+Neighborhood.create(name: 'Castleton Corners')
+Neighborhood.create(name: 'Charleston')
+Neighborhood.create(name: 'Clifton')
+Neighborhood.create(name: 'Dongan Hills')
+Neighborhood.create(name: 'Eltingville')
+Neighborhood.create(name: 'Emerson Hill')
+Neighborhood.create(name: 'Graniteville')
+Neighborhood.create(name: 'Grant City')
+Neighborhood.create(name: 'Grasmere/Concord')
+Neighborhood.create(name: 'Great Kills')
+Neighborhood.create(name: 'Grymes Hill')
+Neighborhood.create(name: 'Huguenot')
+Neighborhood.create(name: 'Livingston')
+Neighborhood.create(name: 'Manor Heights')
+Neighborhood.create(name: 'Mariners Harbor')
+Neighborhood.create(name: 'Midland Beach')
+Neighborhood.create(name: 'New Brighton')
+Neighborhood.create(name: 'New Dorp/New Dorp Beach')
+Neighborhood.create(name: 'New Springville')
+Neighborhood.create(name: 'Oakwood')
+Neighborhood.create(name: 'Pleasant Plains')
+Neighborhood.create(name: 'Port Richmond')
+Neighborhood.create(name: "Prince's Bay")
+Neighborhood.create(name: 'Richmondtown')
+Neighborhood.create(name: 'Rosebank')
+Neighborhood.create(name: 'Rossville')
+Neighborhood.create(name: 'Shore Acres')
+Neighborhood.create(name: 'Silver Lake')
+Neighborhood.create(name: 'South Beach')
+Neighborhood.create(name: 'St. George')
+Neighborhood.create(name: 'Stapleton')
+Neighborhood.create(name: 'Sunnyside')
+Neighborhood.create(name: 'Todt Hill')
+Neighborhood.create(name: 'Tompkinsville')
+Neighborhood.create(name: 'Tottenville')
+Neighborhood.create(name: 'Travis')
+Neighborhood.create(name: 'West New Brighton')
+Neighborhood.create(name: 'Westerleigh')
+Neighborhood.create(name: 'Willowbrook')
+Neighborhood.create(name: 'Woodrow')
 
-Neighborhood.create(name: ('Annadale')
-Neighborhood.create(name: ('Arden Heights')
-Neighborhood.create(name: ('Arrochar')
-Neighborhood.create(name: ('Bay Street')
-Neighborhood.create(name: ('Bulls Head')
-Neighborhood.create(name: ('Castleton Corners')
-Neighborhood.create(name: ('Charleston')
-Neighborhood.create(name: ('Clifton')
-Neighborhood.create(name: ('Dongan Hills')
-Neighborhood.create(name: ('Eltingville')
-Neighborhood.create(name: ('Emerson Hill')
-Neighborhood.create(name: ('Graniteville')
-Neighborhood.create(name: ('Grant City')
-Neighborhood.create(name: ('Grasmere/Concord')
-Neighborhood.create(name: ('Great Kills')
-Neighborhood.create(name: ('Grymes Hill')
-Neighborhood.create(name: ('Huguenot')
-Neighborhood.create(name: ('Livingston')
-Neighborhood.create(name: ('Manor Heights')
-Neighborhood.create(name: ('Mariners Harbor')
-Neighborhood.create(name: ('Midland Beach')
-Neighborhood.create(name: ('New Brighton')
-Neighborhood.create(name: ('New Dorp/New Dorp Beach')
-Neighborhood.create(name: ('New Springville')
-Neighborhood.create(name: ('Oakwood')
-Neighborhood.create(name: ('Pleasant Plains')
-Neighborhood.create(name: ('Port Richmond')
-Neighborhood.create(name: ("Prince's Bay")
-Neighborhood.create(name: ('Richmondtown')
-Neighborhood.create(name: ('Rosebank')
-Neighborhood.create(name: ('Rossville')
-Neighborhood.create(name: ('Shore Acres')
-Neighborhood.create(name: ('Silver Lake')
-Neighborhood.create(name: ('South Beach')
-Neighborhood.create(name: ('St. George')
-Neighborhood.create(name: ('Stapleton')
-Neighborhood.create(name: ('Sunnyside')
-Neighborhood.create(name: ('Todt Hill')
-Neighborhood.create(name: ('Tompkinsville')
-Neighborhood.create(name: ('Tottenville')
-Neighborhood.create(name: ('Travis')
-Neighborhood.create(name: ('West New Brighton')
-Neighborhood.create(name: ('Westerleigh')
-Neighborhood.create(name: ('Willowbrook')
-Neighborhood.create(name: ('Woodrow')
+# interests
+Interest.create(name: 'Alcohol')
+Interest.create(name: 'Animals')
+Interest.create(name: 'Astrology')
+Interest.create(name: 'Books')
+Interest.create(name: 'Cats')
+Interest.create(name: 'Dogs')
+Interest.create(name: 'Family')
+Interest.create(name: 'Fashion')
+Interest.create(name: 'Finance')
+Interest.create(name: 'Food')
+Interest.create(name: 'Gaming')
+Interest.create(name: 'Health and Nutrition')
+Interest.create(name: 'Movies')
+Interest.create(name: 'Music')
+Interest.create(name: 'Fitness')
+Interest.create(name: 'Programming')
+Interest.create(name: 'Sports')
+Interest.create(name: 'Technology')
+Interest.create(name: 'Travel')
+Interest.create(name: 'TV')
+
+# user_interests
+UserInterest.create(user: matt, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: matt, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: matt, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: matt, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: matt, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: avi, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: avi, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: avi, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: avi, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: avi, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: kim, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: kim, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: kim, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: kim, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: kim, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: sukrit, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: sukrit, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: sukrit, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: sukrit, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: sukrit, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
+UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
+
+# posts
+p1 = Post.create(user: matt, topic: Topic.find_by(name: 'Sports'), neighborhood: Neighborhood.find_by(name: 'Midtown East'), description: 'I love sportz!', date: Date.new(2019, 10, 31), time_of_day: 'Evening')
+p2 = Post.create(user: avi, topic: Topic.find_by(name: 'Gaming'), neighborhood: Neighborhood.find_by(name: 'Dumbo/Vinegar Hill'), description: "Let's get a drink and talk about how awesome gaming is!!!", date: Date.new(2019, 11, 1), time_of_day: 'Early afternoon')
+p3 = Post.create(user: kim, topic: Topic.find_by(name: 'Food'), neighborhood: Neighborhood.find_by(name: 'Upper West Side'), description: 'MoodFood', date: Date.new(2019, 10, 31), time_of_day: 'Late afternoon')
+
+# post_interests
+PostInterest.create(user: matt, post: p2)
+PostInterest.create(user: matt, post: p3)
+PostInterest.create(user: michelle, post: p1)
+PostInterest.create(user: michelle, post: p2)
+PostInterest.create(user: avi, post: p1)
+PostInterest.create(user: avi, post: p3)
+PostInterest.create(user: kim, post: p1)
+PostInterest.create(user: kim, post: p2)
+PostInterest.create(user: sukrit, post: p2)
+PostInterest.create(user: sukrit, post: p3)
+
+# events
+e1 = Event.create(post: p1, user: matt, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.new(2019, 10, 31), time_hour: 9, time_minute: 30, time_am_pm: 'pm')
+e2 = Event.create(post: p3, user: kim, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.new(2019, 10, 31), time_hour: 5, time_minute: 0, time_am_pm: 'pm')
+
+# event_attendees
+EventAttendee.create(user: kim, event: e1)
+EventAttendee.create(user: avi, event: e1)
+EventAttendee.create(user: sukrit, event: e1)
+EventAttendee.create(user: michelle, event: e2)
+EventAttendee.create(user: matt, event: e2)

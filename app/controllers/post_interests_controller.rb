@@ -1,0 +1,2 @@
+class PostInterestsController < ApplicationController
+end

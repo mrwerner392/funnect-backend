@@ -10,21 +10,93 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_234406) do
+ActiveRecord::Schema.define(version: 2019_10_31_184029) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "neighboorhoods", force: :cascade do |t|
+  create_table "event_attendees", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_event_attendees_on_event_id"
+    t.index ["user_id"], name: "index_event_attendees_on_user_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.string "description"
+    t.string "location"
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "time_hour"
+    t.integer "time_minute"
+    t.string "time_am_pm"
+    t.bigint "user_id", null: false
+    t.index ["post_id"], name: "index_events_on_post_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "interests", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["event_id"], name: "index_messages_on_event_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "neighborhoods", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+  end
+
+  create_table "post_interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_interests_on_post_id"
+    t.index ["user_id"], name: "index_post_interests_on_user_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.bigint "topic_id", null: false
+    t.bigint "neighborhood_id", null: false
+    t.date "date"
+    t.string "time_of_day"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["neighborhood_id"], name: "index_posts_on_neighborhood_id"
+    t.index ["topic_id"], name: "index_posts_on_topic_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "topics", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_interests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "interest_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["interest_id"], name: "index_user_interests_on_interest_id"
+    t.index ["user_id"], name: "index_user_interests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,4 +112,17 @@ ActiveRecord::Schema.define(version: 2019_10_30_234406) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "event_attendees", "events"
+  add_foreign_key "event_attendees", "users"
+  add_foreign_key "events", "posts"
+  add_foreign_key "events", "users"
+  add_foreign_key "messages", "events"
+  add_foreign_key "messages", "users"
+  add_foreign_key "post_interests", "posts"
+  add_foreign_key "post_interests", "users"
+  add_foreign_key "posts", "neighborhoods"
+  add_foreign_key "posts", "topics"
+  add_foreign_key "posts", "users"
+  add_foreign_key "user_interests", "interests"
+  add_foreign_key "user_interests", "users"
 end
