@@ -24,6 +24,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def created_posts
+    user = User.find(params[:id])
+    render json: user.created_posts
+  end
+
+  def posts_interested_in
+    user = User.find(params[:id])
+    render json: user.posts_interested_in
+  end
+
+  def available_posts
+    user = User.find(params[:id])
+    render json: user.available_posts
+  end
+
   private
 
   def user_params
