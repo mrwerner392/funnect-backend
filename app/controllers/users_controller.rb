@@ -14,6 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    user_id = params[:id]
+    if logged_in_user_id = user_id.to_i
+      user = User.find(user_id)
+      render json: user
+    else
+      render json: {error: 'You are not authorized'}, status: :unauthorized
+    end
+  end
+
   private
 
   def user_params
