@@ -353,6 +353,13 @@ p5 = Post.create(user: matt, topic: Topic.find_by(name: 'Money'), neighborhood: 
 p6 = Post.create(user: kim, topic: Topic.find_by(name: 'Parenthood'), neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about parenthood!', date: Date.new(2019, 11, 3), time_of_day: 'Lunchtime')
 p7 = Post.create(user: avi, topic: Topic.find_by(name: 'Relationships'), neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about relationships!', date: Date.new(2019, 11, 4), time_of_day: 'Morning')
 p8 = Post.create(user: kim, topic: Topic.find_by(name: 'Music'), neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about music!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p9 = Post.create(user: avi, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p10 = Post.create(user: michelle, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p11 = Post.create(user: sukrit, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p12 = Post.create(user: kim, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p13 = Post.create(user: avi, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p14 = Post.create(user: michelle, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
+p15 = Post.create(user: sukrit, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about something!', date: Date.new(2019, 11, 4), time_of_day: 'Late afternoon')
 
 # post_interests
 PostInterest.create(user: michelle, post: p1)
