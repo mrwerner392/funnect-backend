@@ -12,6 +12,10 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :user_interests, dependent: :destroy
   has_many :interests, through: :user_interests
+
   has_secure_password
 
+  def available_posts
+    Post.filter_available(self)
+  end
 end
