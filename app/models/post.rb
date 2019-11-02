@@ -12,4 +12,8 @@ class Post < ApplicationRecord
     available_posts.filter { |post| !post.interested_users.include?(user)}
   end
 
+  def is_past
+    self.date < Date.today
+  end
+
 end
