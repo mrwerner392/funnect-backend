@@ -39,6 +39,11 @@ class UsersController < ApplicationController
     render json: user.available_posts
   end
 
+  def created_events
+    user = User.find(params[:id])
+    render json: user.created_events
+  end
+
   private
 
   def user_params
