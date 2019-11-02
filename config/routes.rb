@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get '/users/:id/posts_interested_in', to: 'users#posts_interested_in'
   get '/users/:id/available_posts', to: 'users#available_posts'
   get '/users/:id/created_events', to: 'users#created_events'
+  get '/users/:id/events_attended', to: 'users#events_attended'
 
 end
