@@ -6,8 +6,8 @@ class Event < ApplicationRecord
   has_many :event_attendees, dependent: :destroy
   has_many :users_attending, through: :event_attendees, source: :user
 
-  def is_past
-    self.date < Date.today
+  def status
+    self.date < Date.today ? 'past' : 'active'
   end
 
 end
