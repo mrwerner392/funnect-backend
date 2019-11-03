@@ -2,12 +2,15 @@ class EventsController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    event = Event.create(user_id: params[:user_id], post: post, description: post.description, date: post.date)
+    event = Event.create(user_id: params[:user_id].to_i, post: post, description: post.description, date: post.date)
     if event.valid?
       params[:attendees].each do |attendee|
-        EventAttendee.create(event: event, user: attendee)
+        EventAttendee.create(event: event, user_id: attendee)
       end
-    render json: event
+      render json: event
+    else
+      render json: {errors: event.errors.full_messages}
+    end
   end
 
 end
