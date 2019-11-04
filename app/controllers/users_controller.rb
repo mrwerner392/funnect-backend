@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def create
-    user = User.create(user_params)
+    user = User.create(user_params_create)
     if user.valid?
       interests = params[:interests]
       interests.each do |interest|
@@ -21,6 +21,15 @@ class UsersController < ApplicationController
       render json: user
     else
       render json: {error: 'You are not authorized'}, status: :unauthorized
+    end
+  end
+
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params_update)
+      render json: user
+    else
+      render json: {errors: user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
@@ -51,8 +60,12 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
+  def user_params_create
     params.permit(:first_name, :username, :password, :age, :gender, :bio, :college, :occupation)
+  end
+
+  def user_params_update
+    params.permit(:first_name, :username, :age, :gender, :bio, :college, :occupation)
   end
 
 end
