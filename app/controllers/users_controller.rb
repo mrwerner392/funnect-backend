@@ -35,27 +35,27 @@ class UsersController < ApplicationController
 
   def created_posts
     user = User.find(params[:id])
-    render json: user.created_posts
+    render json: user.created_posts, include: '**'
   end
 
   def posts_interested_in
     user = User.find(params[:id])
-    render json: user.posts_interested_in
+    render json: user.posts_interested_in, include: '**'
   end
 
   def available_posts
     user = User.find(params[:id])
-    render json: user.available_posts
+    render json: user.available_posts, include: '**'
   end
 
   def created_events
     user = User.find(params[:id])
-    render json: user.created_events
+    render json: user.created_events, include: '**'
   end
 
   def events_attended
     user = User.find(params[:id])
-    render json: user.events_attended
+    render json: user.events_attended, include: '**'
   end
 
   private
