@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
 
   def create
-    user = User.create(user_params)
+    user = User.create(user_params_create)
     if user.valid?
       interests = params[:interests]
       interests.each do |interest|
@@ -24,35 +24,48 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+    if user.update(user_params_update)
+      render json: user
+    else
+      render json: {errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
   def created_posts
     user = User.find(params[:id])
-    render json: user.created_posts
+    render json: user.created_posts, include: '**'
   end
 
   def posts_interested_in
     user = User.find(params[:id])
-    render json: user.posts_interested_in
+    render json: user.posts_interested_in, include: '**'
   end
 
   def available_posts
     user = User.find(params[:id])
-    render json: user.available_posts
+    render json: user.available_posts, include: '**'
   end
 
   def created_events
     user = User.find(params[:id])
-    render json: user.created_events
+    render json: user.created_events, include: '**'
   end
 
   def events_attended
     user = User.find(params[:id])
-    render json: user.events_attended
+    render json: user.events_attended, include: '**'
   end
 
   private
 
-  def user_params
+  def user_params_create
     params.permit(:first_name, :username, :password, :age, :gender, :bio, :college, :occupation)
+  end
+
+  def user_params_update
+    params.permit(:first_name, :username, :age, :gender, :bio, :college, :occupation)
   end
 
 end
