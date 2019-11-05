@@ -4,7 +4,7 @@ class PostInterestsController < ApplicationController
     post = Post.find(params[:post_id])
     post_interest = PostInterest.create(post: post, user_id: params[:user_id])
     if post_interest.valid?
-      render json: post
+      render json: post, include: '**'
     else
       render json: {errors: post_interest.errors.full_messages}
     end
