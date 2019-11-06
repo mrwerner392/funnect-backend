@@ -1,8 +1,6 @@
 class PostInterestsController < ApplicationController
 
   def create
-    # post = Post.find(params[:post_id])
-    # user = User.find(params[:user_id])
     post_interest = PostInterest.find_by(post_id: params[:post_id], user_id: params[:user_id])
     if post_interest
       post_interest.destroy
