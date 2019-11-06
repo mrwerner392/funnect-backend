@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
 
   def logged_in_user_id
     token = request.headers["Authorization"]
-
     begin
       decoded_payload = JWT.decode(token, hmac_secret, true, {algorithm: 'HS256'})
       return decoded_payload.first["user_id"].to_i
