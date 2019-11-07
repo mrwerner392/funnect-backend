@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    is_right_user?(params[:user_id])
     post = Post.find(params[:id])
     if post
       render json: post, include: '**'
