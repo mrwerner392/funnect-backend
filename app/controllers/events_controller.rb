@@ -7,7 +7,7 @@ class EventsController < ApplicationController
       params[:attendees].each do |attendee|
         EventAttendee.create(event: event, user_id: attendee)
       end
-      render json: event#, include: '**'
+      render json: event, include: '**'
     else
       render json: {errors: event.errors.full_messages}
     end
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
   def show
     event = Event.find(params[:id])
     if event
-      render json: event#, include: '**'
+      render json: event, include: '**'
     else
       render json: {errors: event.errors.full_messages}
     end
