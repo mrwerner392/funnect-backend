@@ -16,45 +16,45 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: user
+    render json: @user
   end
 
   def update
-    if user.update(user_params_update)
+    if @user.update(user_params_update)
       if params[:new_interests] != nil
-        user.user_interests.destroy_all
+        @user.user_interests.destroy_all
         params[:new_interests].each do |interest|
-          user_interest = UserInterest.create(user: user, interest: Interest.find_by(name: interest))
+          user_interest = UserInterest.create(user: @user, interest: Interest.find_by(name: interest))
           if !user_interest.valid?
             render json: {errors: user_interest.errors.full_messages }, status: :unprocessable_entity
             return
           end
         end
       end
-      render json: user
+      render json: @user
     else
-      render json: {errors: user.errors.full_messages }, status: :unprocessable_entity
+      render json: {errors: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
   def created_posts
-    render json: user.created_posts, include: '**'
+    render json: @user.created_posts, include: '**'
   end
 
   def posts_interested_in
-    render json: user.posts_interested_in, include: '**'
+    render json: @user.posts_interested_in, include: '**'
   end
 
   def available_posts
-    render json: user.available_posts, include: '**'
+    render json: @user.available_posts, include: '**'
   end
 
   def created_events
-    render json: user.created_events, include: '**'
+    render json: @user.created_events, include: '**'
   end
 
   def events_attended
-    render json: user.events_attended, include: '**'
+    render json: @user.events_attended, include: '**'
   end
 
   private
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def find_and_authorize_user
     is_right_user?(params[:id])
-    user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 end
