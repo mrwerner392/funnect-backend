@@ -27,21 +27,16 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user.update(user_params_update)
-      byebug
-      if user.interests.pluck(:name).sort !=
-                                params[:interests].sort
+      if params[:new_interests] != nil
         user.user_interests.destroy_all
-        byebug
-        params[:interests].each do |interest|
+        params[:new_interests].each do |interest|
           user_interest = UserInterest.create(user: user, interest: Interest.find_by(name: interest))
-          byebug
           if !user_interest.valid?
             render json: {errors: user_interest.errors.full_messages }, status: :unprocessable_entity
             return
           end
         end
       end
-      byebug
       render json: user
     else
       render json: {errors: user.errors.full_messages }, status: :unprocessable_entity
