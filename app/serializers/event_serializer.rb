@@ -5,4 +5,5 @@ class EventSerializer < ActiveModel::Serializer
   has_one :user
   has_many :users_attending
   has_many :messages
+
 end
