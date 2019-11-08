@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     date = params[:day] == 'Today' ? Date.today : Date.tomorrow
     post = Post.create(user_id: params[:id], topic_id: params[:topic], neighborhood_id: params[:neighborhood], description: params[:description], date: date, time_of_day: params[:time_of_day])
     if post.valid?
-      ActionCable.server.broadcast('posts_channel', post)
+      ActionCable.server.broadcast('posts_channel', PostSerializer.new(post, {include: '**'}))
       render json: post, include: '**'
     else
       render json: {errors: post.errors.full_messages}
