@@ -377,9 +377,9 @@ p5 = Post.create(user: sukrit, topic: Topic.all[rand(Topic.all.length)], neighbo
 p6 = Post.create(user: matt, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is matts old post', date: Date.yesterday, time_of_day: 'Nighttime')
 
 # testing post validations
-t1 = Post.create()
-t2 = Post.create(description: 'fjdnakfalbfkabvjkabvjkebavjkreq;bjnvke;bgjkrvejnbkqvbjakkvakjkbjvdaskjvbajdksbvk;abeviwbupvueirwpvhbuiepwhvbuiwhbvuipwebhuveprwvbpwvbhurgviruevhiuerpieguk;abvjkabfajkbvkjadsbvkadjsbvkjadsbkajbvdk;sabvakjbvajkbvkadbvjka;bfjkbvkad;bvjklabvjkabvnjkavbnjkavi;', time_of_day: 'dnfjkvbnjeilgberjilaghuiwbgrueilqguebgfiuqlberguilqburgiqlbgriulbgrlaiugbrilqugbrilaurailubgrailgheiru')
-byebug
+# t1 = Post.create()
+# t2 = Post.create(description: 'fjdnakfalbfkabvjkabvjkebavjkreq;bjnvke;bgjkrvejnbkqvbjakkvakjkbjvdaskjvbajdksbvk;abeviwbupvueirwpvhbuiepwhvbuiwhbvuipwebhuveprwvbpwvbhurgviruevhiuerpieguk;abvjkabfajkbvkjadsbvkadjsbvkjadsbkajbvdk;sabvakjbvajkbvkadbvjka;bfjkbvkad;bvjklabvjkabvnjkavbnjkavi;', time_of_day: 'dnfjkvbnjeilgberjilaghuiwbgrueilqguebgfiuqlberguilqburgiqlbgriulbgrlaiugbrilqugbrilaurailubgrailgheiru')
+# byebug
 
 # post_interests
 PostInterest.create(user: michelle, post: p1)
