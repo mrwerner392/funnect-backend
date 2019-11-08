@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     date = params[:day] == 'Today' ? Date.today : Date.tomorrow
     post = Post.create(user_id: params[:id], topic_id: params[:topic], neighborhood_id: params[:neighborhood], description: params[:description], date: date, time_of_day: params[:time_of_day])
     if post.valid?
-      ActionCable.server.broadcast('posts_channel', PostSerializer.new(post, {include: '**'}))
+      ActionCable.server.broadcast('posts_channel', post_for_broadcast(post))
       render json: post, include: '**'
     else
       render json: {errors: post.errors.full_messages}
@@ -27,5 +27,29 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def post_for_broadcast(post)
+    {
+      id: post.id,
+      user: {
+        id: post.user.id,
+        username: post.user.username,
+        first_name: post.user.first_name,
+        age: post.user.age,
+        bio: post.user.bio,
+        gender: post.user.gender,
+        college: post.user.college,
+        occupation: post.user.occupation,
+        interests: post.user.interests,
+      },
+      topic: post.topic,
+      neighborhood: post.neighborhood,
+      interested_users: post.interested_users,
+      date: post.date,
+      description: post.description,
+      status: post.status,
+      time_of_day: post.time_of_day
+    }
+  end
 
 end
