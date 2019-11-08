@@ -1,6 +1,7 @@
 class PostInterestsController < ApplicationController
 
   def create
+    is_right_user?(params[:user_id])
     post_interest = PostInterest.find_by(post_id: params[:post_id], user_id: params[:user_id])
     if post_interest
       post_interest.destroy
@@ -16,11 +17,4 @@ class PostInterestsController < ApplicationController
       end
     end
   end
-
-  # def destroy
-  #   post_interest = PostInterest.find(params[:id])
-  #   post_interest.destroy
-  #   render json: {}
-  # end
-
 end

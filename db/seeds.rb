@@ -35,6 +35,14 @@ kim = User.create(first_name: 'Kim', username: 'kim1', password: '1', age: 22, g
 michelle = User.create(first_name: 'Michelle', username: 'michelle1', password: '1', age: 30, gender: 'Female', bio: 'I am michelle', college: 'idk', occupation: 'game maker')
 sukrit = User.create(first_name: 'Sukrit', username: 'sukrit1', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
 
+# testing user validations
+# t1 = User.create(first_name: 'Joe', username: 'sukrit1', password: '1', age: 7, gender: 'Malefffffffffffffhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfh', bio: 'I am sukritfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfewuqifhbiqweubfiehbfuerqhguiqrehgfuieqwrbhfgkjqerbgfiqerbugfiuqerhfgiejrbfgjkerbgiqejrhbguiqrebhgivqrejbgiuqerhgiuqe;hrgiuaehrgiquhwegfiquwebgiuwerbgfbeiqrughiuerwghiuqghipqguh4fiuqghefuiqpewghfiuqepwghiupqreghfipqwghpewqurghfipuqewhgfiupq', college: 'somewherefejnqrkgqhjierlhgjkqehrgukqkhuergiphquerghiqerdjkghvqwerjl', occupation: 'inventor of websocketsnjrfk;aenbjrgejkr;gbjkrew;bgkbjkwerbnvgjkureighqrvabndjkvbnkad;bvkjaerbgjkaergk;')
+# t2 = User.create(first_name: 'Sukrit', password: '1', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+# t3 = User.create(first_name: 'Sukrit', username: 'suk', password: '1', age: 205, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+# t4 = User.create(first_name: 'Sukrit', username: 'sukritnewjfbeorwjbnv', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+#
+# byebug
+
 # topics
 
 Topic.create(name: 'Aliens')
@@ -367,6 +375,11 @@ p3 = Post.create(user: kim, topic: Topic.all[rand(Topic.all.length)], neighborho
 p4 = Post.create(user: michelle, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is another post', date: Date.today, time_of_day: 'Late Afternoon')
 p5 = Post.create(user: sukrit, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'another post from the past', date: Date.yesterday, time_of_day: 'Lunchtime')
 p6 = Post.create(user: matt, topic: Topic.all[rand(Topic.all.length)], neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is matts old post', date: Date.yesterday, time_of_day: 'Nighttime')
+
+# testing post validations
+# t1 = Post.create()
+# t2 = Post.create(description: 'fjdnakfalbfkabvjkabvjkebavjkreq;bjnvke;bgjkrvejnbkqvbjakkvakjkbjvdaskjvbajdksbvk;abeviwbupvueirwpvhbuiepwhvbuiwhbvuipwebhuveprwvbpwvbhurgviruevhiuerpieguk;abvjkabfajkbvkjadsbvkadjsbvkjadsbkajbvdk;sabvakjbvajkbvkadbvjka;bfjkbvkad;bvjklabvjkabvnjkavbnjkavi;', time_of_day: 'dnfjkvbnjeilgberjilaghuiwbgrueilqguebgfiuqlberguilqburgiqlbgriulbgrlaiugbrilqugbrilaurailubgrailgheiru')
+# byebug
 
 # post_interests
 PostInterest.create(user: michelle, post: p1)
