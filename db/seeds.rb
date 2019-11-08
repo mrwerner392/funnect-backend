@@ -35,6 +35,14 @@ kim = User.create(first_name: 'Kim', username: 'kim1', password: '1', age: 22, g
 michelle = User.create(first_name: 'Michelle', username: 'michelle1', password: '1', age: 30, gender: 'Female', bio: 'I am michelle', college: 'idk', occupation: 'game maker')
 sukrit = User.create(first_name: 'Sukrit', username: 'sukrit1', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
 
+# testing user validations
+# t1 = User.create(first_name: 'Joe', username: 'sukrit1', password: '1', age: 7, gender: 'Malefffffffffffffhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfh', bio: 'I am sukritfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfhfewuqifhbiqweubfiehbfuerqhguiqrehgfuieqwrbhfgkjqerbgfiqerbugfiuqerhfgiejrbfgjkerbgiqejrhbguiqrebhgivqrejbgiuqerhgiuqe;hrgiuaehrgiquhwegfiquwebgiuwerbgfbeiqrughiuerwghiuqghipqguh4fiuqghefuiqpewghfiuqepwghiupqreghfipqwghpewqurghfipuqewhgfiupq', college: 'somewherefejnqrkgqhjierlhgjkqehrgukqkhuergiphquerghiqerdjkghvqwerjl', occupation: 'inventor of websocketsnjrfk;aenbjrgejkr;gbjkrew;bgkbjkwerbnvgjkureighqrvabndjkvbnkad;bvkjaerbgjkaergk;')
+# t2 = User.create(first_name: 'Sukrit', password: '1', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+# t3 = User.create(first_name: 'Sukrit', username: 'suk', password: '1', age: 205, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+# t4 = User.create(first_name: 'Sukrit', username: 'sukritnewjfbeorwjbnv', password: '1', age: 25, gender: 'Male', bio: 'I am sukrit', college: 'somewhere', occupation: 'inventor of websockets')
+#
+# byebug
+
 # topics
 
 Topic.create(name: 'Aliens')
