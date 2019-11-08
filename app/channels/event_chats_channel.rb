@@ -6,5 +6,6 @@ class EventChatsChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    raise error
   end
 end

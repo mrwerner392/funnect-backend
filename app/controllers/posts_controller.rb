@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     post = Post.create(user_id: params[:id], topic_id: params[:topic], neighborhood_id: params[:neighborhood], description: params[:description], date: date, time_of_day: params[:time_of_day])
     if post.valid?
       ws_post = post_for_broadcast(post)
-      return ActionCable.server.broadcast('posts_channel', ws_post)
+      ActionCable.server.broadcast('posts_channel', ws_post)
       # sleep(0.2)
       # render json: post, include: '**'
     else
