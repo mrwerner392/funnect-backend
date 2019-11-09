@@ -404,15 +404,15 @@ PostInterest.create(user: kim, post: p5)
 # PostInterest.create(user: matt, post: p8)
 
 # events
-# e1 = Event.create(post: p1, user: matt, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.new(2019, 10, 31), time_hour: 9, time_minute: 30, time_am_pm: 'pm')
-e2 = Event.create(post: p3, user: kim, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.today, time_hour: 5, time_minute: 0, time_am_pm: 'pm')
+e1 = Event.create(post: p1, user: matt, description: "How 'bout them Giants? Let's talk about 'em over a couple cold ones.", location: "McFadden's on 43rd and 2nd", date: Date.today, time_hour: 9, time_minute: 30, time_am_pm: 'pm')
+# e2 = Event.create(post: p3, user: kim, description: "Let's get a snack and talk about what meals are good for which moods.", location: "This cafe at this location", date: Date.today, time_hour: 5, time_minute: 0, time_am_pm: 'pm')
 # e3 = Event.create(post: p4, user: matt, description: 'hey i am an event description', location: 'somewhere', date: Date.new(2019, 11, 4), time_hour: 6, time_minute: 20, time_am_pm: 'pm')
 # e4 = Event.create(post: p5, user: matt, description: 'lets go talk about some cool stuff', location: 'i have no idea', date: Date.new(2019, 11, 3), time_hour: 1, time_minute: 0, time_am_pm: 'pm')
 # e5 = Event.create(post: p7, user: avi, description: 'i want to talk about something with somebody!!!', location: 'walk in the park', date: Date.new(2019, 11, 4), time_hour: 11, time_minute: 45, time_am_pm: 'am')
 # e6 = Event.create(post: p8, user: kim, description: 'hi', location: 'some really cool place', date: Date.new(2019, 11, 4), time_hour: 10, time_minute: 0, time_am_pm: 'am')
 
 # event_attendees
-# EventAttendee.create(user: kim, event: e1)
+EventAttendee.create(user: kim, event: e1)
 # EventAttendee.create(user: sukrit, event: e1)
 # EventAttendee.create(user: michelle, event: e2)
 # EventAttendee.create(user: matt, event: e2)
