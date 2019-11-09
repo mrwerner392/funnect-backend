@@ -5,5 +5,6 @@ class PostsChannel < ApplicationCable::Channel
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    raise NotImplementedError
   end
 end
