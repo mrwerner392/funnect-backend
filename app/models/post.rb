@@ -20,4 +20,28 @@ class Post < ApplicationRecord
     self.date < Date.today ? 'past' : 'active'
   end
 
+  def post_for_broadcast
+    {
+      id: self.id,
+      user: {
+        id: self.user.id,
+        username: self.user.username,
+        first_name: self.user.first_name,
+        age: self.user.age,
+        bio: self.user.bio,
+        gender: self.user.gender,
+        college: self.user.college,
+        occupation: self.user.occupation,
+        interests: self.user.interests,
+      },
+      topic: self.topic,
+      neighborhood: self.neighborhood,
+      interested_users: self.interested_users,
+      date: self.date,
+      description: self.description,
+      status: self.status,
+      time_of_day: self.time_of_day
+    }
+  end
+
 end

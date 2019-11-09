@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     date = params[:day] == 'Today' ? Date.today : Date.tomorrow
     post = Post.create(user_id: params[:id], topic_id: params[:topic], neighborhood_id: params[:neighborhood], description: params[:description], date: date, time_of_day: params[:time_of_day])
     if post.valid?
-      ws_post = post_for_broadcast(post)
+      ws_post = post.post_for_broadcast
       ActionCable.server.broadcast('posts_channel', ws_post)
       # sleep(0.2)
       # render json: post, include: '**'
@@ -28,30 +28,30 @@ class PostsController < ApplicationController
     end
   end
 
-  private
-
-  def post_for_broadcast(post)
-    {
-      id: post.id,
-      user: {
-        id: post.user.id,
-        username: post.user.username,
-        first_name: post.user.first_name,
-        age: post.user.age,
-        bio: post.user.bio,
-        gender: post.user.gender,
-        college: post.user.college,
-        occupation: post.user.occupation,
-        interests: post.user.interests,
-      },
-      topic: post.topic,
-      neighborhood: post.neighborhood,
-      interested_users: post.interested_users,
-      date: post.date,
-      description: post.description,
-      status: post.status,
-      time_of_day: post.time_of_day
-    }
-  end
+  # private
+  #
+  # def post_for_broadcast(post)
+  #   {
+  #     id: post.id,
+  #     user: {
+  #       id: post.user.id,
+  #       username: post.user.username,
+  #       first_name: post.user.first_name,
+  #       age: post.user.age,
+  #       bio: post.user.bio,
+  #       gender: post.user.gender,
+  #       college: post.user.college,
+  #       occupation: post.user.occupation,
+  #       interests: post.user.interests,
+  #     },
+  #     topic: post.topic,
+  #     neighborhood: post.neighborhood,
+  #     interested_users: post.interested_users,
+  #     date: post.date,
+  #     description: post.description,
+  #     status: post.status,
+  #     time_of_day: post.time_of_day
+  #   }
+  # end
 
 end
