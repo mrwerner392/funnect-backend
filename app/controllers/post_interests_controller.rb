@@ -11,7 +11,7 @@ class PostInterestsController < ApplicationController
       post_interest = PostInterest.create(post_id: params[:post_id], user_id: params[:user_id])
       if post_interest.valid?
         post = Post.find(params[:post_id])
-        PostInterestsChannel.broadcast_to(post, post)
+        PostInterestsChannel.broadcast_to(post, post.post_for_broadcast)
         render json: post, include: '**'
       else
         render json: {errors: post_interest.errors.full_messages}
