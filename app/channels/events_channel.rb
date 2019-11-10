@@ -1,6 +1,6 @@
-class PostsChannel < ApplicationCable::Channel
+class EventsChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "posts_channel"
+    stream_from "events_channel"
   end
 
   def unsubscribed
