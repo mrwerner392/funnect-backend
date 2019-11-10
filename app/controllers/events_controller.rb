@@ -7,6 +7,7 @@ class EventsController < ApplicationController
       params[:attendees].each do |attendee|
         EventAttendee.create(event: event, user_id: attendee)
       end
+      ActionCable.server.broadcast('events_channel', event.event_for_broadcast)
       render json: event, include: '**'
     else
       render json: {errors: event.errors.full_messages}
