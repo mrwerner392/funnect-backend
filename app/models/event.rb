@@ -11,7 +11,6 @@ class Event < ApplicationRecord
   end
 
   def today_or_tomorrow
-    byebug
     self.post.today_or_tomorrow
   end
 
