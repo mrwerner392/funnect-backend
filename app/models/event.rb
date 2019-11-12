@@ -10,6 +10,10 @@ class Event < ApplicationRecord
     self.date < Date.today ? 'past' : 'active'
   end
 
+  def today_or_tomorrow
+    self.post.today_or_tomorrow
+  end
+
   def event_for_broadcast
     {
       id: self.id,

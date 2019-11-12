@@ -1,5 +1,5 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id, :date, :time_of_day, :description, :status
+  attributes :id, :date, :time_of_day, :description, :status, :today_or_tomorrow
 
   has_one :user
   has_one :topic

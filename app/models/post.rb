@@ -20,6 +20,16 @@ class Post < ApplicationRecord
     self.date < Date.today ? 'past' : 'active'
   end
 
+  def today_or_tomorrow
+    if self.date == Date.tomorrow
+      return 'Tomorrow'
+    elsif self.date == Date.today
+      return 'Today'
+    else
+      return 'past'
+    end
+  end
+
   def post_for_broadcast
     {
       id: self.id,

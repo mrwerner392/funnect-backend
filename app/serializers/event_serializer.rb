@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :description, :location, :date, :time_hour, :time_minute, :time_am_pm, :status
+  attributes :id, :description, :location, :date, :time_hour, :time_minute, :time_am_pm, :status, :today_or_tomorrow
 
   has_one :post
   has_one :user

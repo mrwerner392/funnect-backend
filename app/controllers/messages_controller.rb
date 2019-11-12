@@ -5,7 +5,7 @@ class MessagesController < ApplicationController
     event = Event.find(params[:event_id])
     message = Message.create(user_id: params[:user_id], event: event, content: params[:content])
     if message.valid?
-      EventChatsChannel.broadcast_to(event, MessageSerializer.new(message))
+      EventChatsChannel.broadcast_to(event, message.message_for_broadcast)
       render json: message
     else
       render json: {errors: message.errors.full_messages}, status: 422

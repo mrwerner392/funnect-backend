@@ -19,7 +19,8 @@ class User < ApplicationRecord
   validates :username, uniqueness: :true
   validates :age, numericality: { greater_than_or_equal_to: 18, less_than_or_equal_to: 110 }
   validates :username, length: { minimum: 4, maximum: 16 }
-  validates :first_name, :gender, :college, :occupation, length: { maximum: 50 }
+  validates :first_name, :gender, :occupation, length: { maximum: 30 }
+  validates :college, length: { maximum: 50 }
   validates :bio, length: { maximum: 200 }
 
   def available_posts
