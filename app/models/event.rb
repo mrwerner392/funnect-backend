@@ -7,7 +7,7 @@ class Event < ApplicationRecord
   has_many :users_attending, through: :event_attendees, source: :user
 
   def status
-    self.date < Date.today ? 'past' : 'active'
+    self.post.status
   end
 
   def today_or_tomorrow

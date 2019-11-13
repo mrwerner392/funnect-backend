@@ -30,6 +30,10 @@ class Post < ApplicationRecord
     end
   end
 
+  # def interested_users_serialized
+  #   users = UserSerializer.new(U)
+  # end
+
   def post_for_broadcast
     {
       id: self.id,
@@ -48,6 +52,7 @@ class Post < ApplicationRecord
       neighborhood: self.neighborhood,
       interested_users: self.interested_users,
       date: self.date,
+      today_or_tomorrow: self.today_or_tomorrow,
       description: self.description,
       status: self.status,
       time_of_day: self.time_of_day
