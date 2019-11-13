@@ -30,6 +30,10 @@ class Post < ApplicationRecord
     end
   end
 
+  # def interested_users_serialized
+  #   users = UserSerializer.new(U)
+  # end
+
   def post_for_broadcast
     {
       id: self.id,
