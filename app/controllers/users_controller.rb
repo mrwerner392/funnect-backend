@@ -46,7 +46,8 @@ class UsersController < ApplicationController
   end
 
   def available_posts
-    render json: @user.available_posts, include: '**'
+    render json: @user.active_available_posts, include: '**'
+    # render json: @user.available_posts, include: '**'
   end
 
   def created_events
