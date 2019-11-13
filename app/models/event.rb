@@ -14,6 +14,24 @@ class Event < ApplicationRecord
     self.post.today_or_tomorrow
   end
 
+  def users_attending_serialized
+    users = self.users_attending
+    serialized_users = users.map do |user|
+      {
+        id: user.id,
+        username: user.username,
+        first_name: user.first_name,
+        age: user.age,
+        bio: user.bio,
+        gender: user.gender,
+        college: user.college,
+        occupation: user.occupation,
+        interests: user.interests,
+      }
+    end
+    serialized_users
+  end
+
   def event_for_broadcast
     {
       id: self.id,
@@ -29,7 +47,7 @@ class Event < ApplicationRecord
         occupation: self.user.occupation,
         interests: self.user.interests,
       },
-      users_attending: self.users_attending,
+      users_attending: self.users_attending_serialized,
       messages: self.messages,
       location: self.location,
       date: self.date,
