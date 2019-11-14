@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/users/:id/available_posts', to: 'users#available_posts'
   get '/users/:id/created_events', to: 'users#created_events'
   get '/users/:id/events_attended', to: 'users#events_attended'
+  patch '/events/:id/update_time', to: 'events#update_time'
+  patch '/events/:id/update_location', to: 'events#update_location'
 
   mount ActionCable.server => '/cable'
 
