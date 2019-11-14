@@ -24,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def update_time
-    event = event.find(params[:id])
+    event = Event.find(params[:id])
     if event.update(time_hour: params[:time_hour], time_minute: params[:time_minute], time_am_pm: params[:time_am_pm])
       render json: event, include: '**'
     else
@@ -33,7 +33,7 @@ class EventsController < ApplicationController
   end
 
   def update_location
-    event = event.find(params[:id])
+    event = Event.find(params[:id])
     if event.update(location: params[:location])
       render json: event, include: '**'
     else
