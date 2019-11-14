@@ -48,6 +48,7 @@ class Event < ApplicationRecord
         interests: self.user.interests,
       },
       users_attending: self.users_attending_serialized,
+      today_or_tomorrow: self.today_or_tomorrow,
       messages: self.messages,
       location: self.location,
       date: self.date,
