@@ -26,4 +26,8 @@ class User < ApplicationRecord
   def available_posts
     Post.filter_available(self)
   end
+
+  def active_available_posts
+    self.available_posts.filter { |post| post.status == 'active' }
+  end
 end

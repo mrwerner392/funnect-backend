@@ -30,9 +30,23 @@ class Post < ApplicationRecord
     end
   end
 
-  # def interested_users_serialized
-  #   users = UserSerializer.new(U)
-  # end
+  def interested_users_serialized
+    users = self.interested_users
+    serialized_users = users.map do |user|
+      {
+        id: user.id,
+        username: user.username,
+        first_name: user.first_name,
+        age: user.age,
+        bio: user.bio,
+        gender: user.gender,
+        college: user.college,
+        occupation: user.occupation,
+        interests: user.interests,
+      }
+    end
+    serialized_users
+  end
 
   def post_for_broadcast
     {
@@ -50,7 +64,7 @@ class Post < ApplicationRecord
       },
       topic: self.topic,
       neighborhood: self.neighborhood,
-      interested_users: self.interested_users,
+      interested_users: self.interested_users_serialized,
       date: self.date,
       today_or_tomorrow: self.today_or_tomorrow,
       description: self.description,
