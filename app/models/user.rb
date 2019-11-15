@@ -30,4 +30,9 @@ class User < ApplicationRecord
   def active_available_posts
     self.available_posts.filter { |post| post.status == 'active' }
   end
+
+  def available_posts_no_events
+    self.active_available_posts.filter { |post| post.event == nil }
+  end
+
 end
