@@ -357,6 +357,11 @@ UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.len
 UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
 UserInterest.create(user: michelle, interest: Interest.all[rand(Interest.all.length)])
 
+# for validation testing
+# i1 = UserInterest.create(user: matt, interest: Interest.all[0])
+# i2 = UserInterest.create(user: matt, interest: Interest.all[0])
+# byebug
+
 # posts
 # p1 = Post.create(user: matt, topic: Topic.find_by(name: 'Sports'), neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about sports!', date: Date.new(2019, 10, 31), time_of_day: 'Evening')
 # p2 = Post.create(user: avi, topic: Topic.find_by(name: 'Gaming'), neighborhood: Neighborhood.all[rand(Neighborhood.all.length)], description: 'this is a post about gaming!', date: Date.new(2019, 11, 1), time_of_day: 'Early afternoon')
