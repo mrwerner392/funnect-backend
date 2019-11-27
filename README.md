@@ -81,6 +81,10 @@ Check back soon for the link to the live application!
 - Action Cable / Web Sockets
 - BCRYPT and JWT Auth
 
+## Demo
+
+You can find a video demo of the app [here](https://youtu.be/_rwkjzdiiyY).
+
 ## Author
 
 This application -- across the entire stack -- was planned, designed, and created by [Matt Werner](https://github.com/mrwerner392).
